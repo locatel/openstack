@@ -728,6 +728,7 @@ class Api implements ApiInterface
                     'location' => 'url',
                     'required' => true,
                 ]
+			]
         ];
     }
 
@@ -752,6 +753,7 @@ class Api implements ApiInterface
                     'location' => 'url',
                     'required' => true,
                 ]
+			]
         ];
     }
 
