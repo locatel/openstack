@@ -83,4 +83,19 @@ class OpenStack
     {
         return $this->builder->createIdentityService(3, $options);
     }
+
+    /**
+     * Creates a new Volume v2 service.
+     *
+     * @param array $options Options that will be used in configuring the service.
+     *
+     * @return \OpenStack\Volume\v2\Service
+     */
+    public function volumeV2(array $options = [])
+    {
+        return $this->builder->createService('Volume', 2, array_merge($options, [
+            'catalogName' => 'cinder',
+            'catalogType' => 'volume'
+        ]));
+    }
 }

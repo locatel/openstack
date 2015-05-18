@@ -151,6 +151,35 @@ DESC
         ];
     }
 
+    public function getKeypairs()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'os-keypairs',
+            'params' => [
+                'limit'   => $this->limitParam,
+                //'marker'  => $this->markerParam,
+            ],
+        ];
+    }
+
+    public function getKeypairsDetail()
+    {
+        $op = $this->getAll();
+        $op['path'] += '/detail';
+        return $op;
+    }
+
+    public function getKeypair()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'os-keypairs/{id}',
+            //'params' => ['id' => $this->idParam]
+            'params' => ['name' => $this->nameParam]
+        ];
+    }
+
     public function getImages()
     {
         return [
@@ -297,6 +326,11 @@ DESC
                     'sentAs' => 'user_data',
                     'description' => 'Configuration information or scripts to use upon launch. Must be Base64 encoded.',
                 ],
+				'keyName' => [
+					'type' => 'string',
+                    'sentAs' => 'key_name',
+					'description' => 'The name of the keypair.',
+				],
                 'availabilityZone' => [
                     'type' => 'string',
                     'sentAs' => 'availability_zone',
@@ -382,15 +416,14 @@ EOL
                                 'description' => 'Describes a path to the device for the volume you want to use to boot the server.',
                             ],
 							'uuid' => [
-                                'type' => 'string',
-                                'description' => 'volume UUID',
-                            ],
-                            'volumeSize' => [
+								'type' => 'string',
+								'description' => 'volume UUID',
+							],
+							'volumeSize' => [
 								'type' => 'integer',
 								'sentAs' => 'volume_size',
 								'description' => 'volume size',
 							],
-
                         ]
                     ],
                 ],
