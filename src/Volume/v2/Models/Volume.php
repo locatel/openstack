@@ -14,7 +14,7 @@ use OpenStack\Common\Resource\IsRetrievable;
 class Volume extends AbstractResource implements IsListable, IsRetrievable
 {
     public $id;
-    public $name; // name
+    public $name;
     public $status;
     public $size;
     public $description;
