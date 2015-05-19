@@ -79,6 +79,33 @@ DESC
         ];
     }
 
+    public function getTypes()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'types',
+            'params' => [
+                'limit'   => $this->limitParam,
+            ],
+        ];
+    }
+
+    public function getTypesDetail()
+    {
+        $op = $this->getAll();
+        $op['path'] += '/detail';
+        return $op;
+    }
+
+    public function getType()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'types/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
     private function isRequired(array $param)
     {
         return array_merge($param, ['required' => true]);

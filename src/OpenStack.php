@@ -94,8 +94,8 @@ class OpenStack
     public function volumeV2(array $options = [])
     {
         return $this->builder->createService('Volume', 2, array_merge($options, [
-            'catalogName' => 'cinder',
-            'catalogType' => 'volume'
+            'catalogName' => 'cinderv2',
+            'catalogType' => 'volumev2'
         ]));
     }
 }
