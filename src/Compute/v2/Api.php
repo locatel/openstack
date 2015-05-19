@@ -180,6 +180,35 @@ DESC
         ];
     }
 
+	public function getNetworks()
+	{
+		return [
+			'method' => 'GET',
+			'path'   => 'os-networks',
+			'params' => [
+				'limit'   => $this->limitParam,
+				//'marker'  => $this->markerParam,
+			],
+		];
+	}
+
+	public function getNetworksDetail()
+	{
+		$op = $this->getAll();
+		$op['path'] += '/detail';
+		return $op;
+	}
+
+	public function getNetwork()
+	{
+		return [
+			'method' => 'GET',
+			'path'   => 'os-networks/{id}',
+			'params' => ['id' => $this->idParam]
+		];
+	}
+
+
     public function getImages()
     {
         return [
