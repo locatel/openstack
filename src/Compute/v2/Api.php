@@ -174,7 +174,7 @@ DESC
     {
         return [
             'method' => 'GET',
-            'path'   => 'os-keypairs/{id}',
+            'path'   => 'os-keypairs/{name}',
             //'params' => ['id' => $this->idParam]
             'params' => ['name' => $this->nameParam]
         ];
