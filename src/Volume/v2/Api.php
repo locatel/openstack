@@ -79,6 +79,34 @@ DESC
         ];
     }
 
+    public function getSnapshots()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'snapshots',
+            'params' => [
+                'limit'   => $this->limitParam,
+                'marker'  => $this->markerParam,
+            ],
+        ];
+    }
+
+    public function getSnapshotsDetail()
+    {
+        $op = $this->getAll();
+        $op['path'] += '/detail';
+        return $op;
+    }
+
+    public function getSnapshot()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'snapshots/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
     public function getTypes()
     {
         return [
