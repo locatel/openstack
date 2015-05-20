@@ -96,4 +96,67 @@ class Api implements ApiInterface
             ]
         ];
     }
+
+    public function getTenantUsers()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'tenants/{id}/users',
+            'params' => [
+                'id' => [
+                    'type' => 'string',
+                    'location' => 'url',
+                    'required' => true,
+                ]
+            ]
+        ];
+    }
+
+    public function getUsers()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'users',
+            'params' => [
+                'enabled' => [
+                    'type' => 'boolean',
+                    'location' => 'query'
+                ],
+                'name' => [
+                    'type' => 'string',
+                    'location' => 'query'
+                ]
+            ]
+        ];
+    }
+
+    public function getUser()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'users/{id}',
+            'params' => [
+                'id' => [
+                    'type' => 'string',
+                    'location' => 'url',
+                    'required' => true,
+                ]
+            ]
+        ];
+    }
+
+    public function postUser()
+    {
+        return [
+            'method' => 'POST',
+            'path'   => 'users',
+			'jsonKey' => 'user',
+            'params' => [
+                'name' => [
+                    'type' => 'string',
+                    'required' => true,
+                ],
+            ]
+        ];
+    }
 } 
