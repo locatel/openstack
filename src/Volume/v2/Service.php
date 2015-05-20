@@ -72,4 +72,25 @@ class Service extends AbstractService
         $type->populateFromArray($options);
         return $type;
     }
+
+   /**
+   *
+   *test de récupération de la liste des snapshots
+   *
+   *
+   */
+    public function getSnapshot(array $options = [])
+    {
+        $snapshot = $this->model('Snapshot');
+        $snapshot->populateFromArray($options);
+        return $snapshot;
+    }
+
+    public function listSnapshots(array $options = [], callable $mapFn = null)
+    {
+        $operation = $this->getOperation($this->api->getSnapshots(), $options);
+        return $this->model('Snapshot')->enumerate($operation, $mapFn);
+    }
+
+
 }
