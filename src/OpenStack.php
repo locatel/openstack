@@ -69,7 +69,12 @@ class OpenStack
      */
     public function identityV2(array $options = [])
     {
-        return $this->builder->createIdentityService(2, $options);
+        //return $this->builder->createIdentityService(2, $options);
+        return $this->builder->createService('Identity', 2, array_merge($options, [
+            'catalogName' => 'keystone',
+            'catalogType' => 'identity',
+			'urlType' => 'adminURL',
+        ]));
     }
 
     /**
