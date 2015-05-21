@@ -202,15 +202,15 @@ DESC
                       'type' => 'string',
                       'required' => false,
                   ],
-                 'src_snapshot_id' => [
+                 'snapshot_id' => [
                       'type' => 'string',
                       'required' => false,
                   ],
-                 'src_image_id' => [
+                 'image_id' => [
                       'type' => 'string',
                       'required' => false,
                   ],
-                 'src_volume_id' => [
+                 'volume_id' => [
                       'type' => 'string',
                       'required' => false,
                   ],
