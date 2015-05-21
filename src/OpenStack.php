@@ -69,8 +69,19 @@ class OpenStack
      */
     public function identityV2(array $options = [])
     {
-        //return $this->builder->createIdentityService(2, $options);
-        return $this->builder->createService('Identity', 2, array_merge($options, [
+        return $this->builder->createIdentityService(2, $options);
+    }
+
+    /**
+     * Creates a new IdentityAdmin v2 service.
+     *
+     * @param array $options Options that will be used in configuring the service.
+     *
+     * @return \OpenStack\IdentityAdmin\v2\Service
+     */
+    public function identityAdminV2(array $options = [])
+    {
+        return $this->builder->createService('IdentityAdmin', 2, array_merge($options, [
             'catalogName' => 'keystone',
             'catalogType' => 'identity',
 			'urlType' => 'adminURL',

@@ -1,13 +1,13 @@
 <?php
 
-namespace OpenStack\Identity\v2\Models;
+namespace OpenStack\IdentityAdmin\v2\Models;
 
 use OpenStack\Common\Resource\AbstractResource;
 
 /**
- * Represents an Identity v2 User.
+ * Represents an IdentityAdmin v2 User.
  *
- * @package OpenStack\Identity\v2\Models
+ * @package OpenStack\IdentityAdmin\v2\Models
  */
 class User extends AbstractResource
 {
