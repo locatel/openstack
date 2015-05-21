@@ -51,6 +51,34 @@ the marker value, and begin the list from there.
 DESC
     ];
 
+    public function getSnapshots()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'snapshots',
+            'params' => [
+                'limit'   => $this->limitParam,
+                'marker'  => $this->markerParam,
+            ],
+        ];
+    }
+
+    public function getSnapshotsDetail()
+    {
+        $op = $this->getAll();
+        $op['path'] += '/detail';
+        return $op;
+    }
+
+    public function getSnapshot()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'snapshots/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
     public function postSnapshot()
     {
         return [
@@ -67,6 +95,60 @@ DESC
                       'required' => false,
                   ],
                  'volume_id' => [
+                      'type' => 'string',
+                      'required' => true,
+                  ],
+                 'force' => [
+                   'type' => 'string',
+                   ]
+            ]
+        ];
+    }
+
+    public function getBackups()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'backups',
+            'params' => [
+                'limit'   => $this->limitParam,
+                'marker'  => $this->markerParam,
+            ],
+        ];
+    }
+
+    public function getBackupsDetail()
+    {
+        $op = $this->getAll();
+        $op['path'] += '/detail';
+        return $op;
+    }
+
+    public function getBackup()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'backups/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
+    public function postBackup()
+    {
+        return [
+            'method' => 'POST',
+            'path'   => 'backups',
+            'jsonKey' => 'backup',
+              'params' => [
+                  'name' => [
+                      'type' => 'string',
+                      'required' => true,
+                  ],
+                  'description' => [
+                      'type' => 'string',
+                      'required' => false,
+                  ],
+                 'backup_id' => [
                       'type' => 'string',
                       'required' => true,
                   ],
@@ -105,35 +187,42 @@ DESC
             'params' => ['id' => $this->idParam]
         ];
     }
-
-    public function getSnapshots()
+    public function postVolume()
     {
         return [
-            'method' => 'GET',
-            'path'   => 'snapshots',
-            'params' => [
-                'limit'   => $this->limitParam,
-                'marker'  => $this->markerParam,
-            ],
+            'method' => 'POST',
+            'path'   => 'volumes',
+            'jsonKey' => 'volume',
+              'params' => [
+                  'name' => [
+                      'type' => 'string',
+                      'required' => true,
+                  ],
+                  'description' => [
+                      'type' => 'string',
+                      'required' => false,
+                  ],
+                 'snapshot_id' => [
+                      'type' => 'string',
+                      'required' => false,
+                  ],
+                 'image_id' => [
+                      'type' => 'string',
+                      'required' => false,
+                  ],
+                 'volume_id' => [
+                      'type' => 'string',
+                      'required' => false,
+                  ],
+                 'force' => [
+                   'type' => 'string',
+                 ],
+                 'size' => [
+                     'type' => 'integer',
+                   ],
+            ]
         ];
     }
-
-    public function getSnapshotsDetail()
-    {
-        $op = $this->getAll();
-        $op['path'] += '/detail';
-        return $op;
-    }
-
-    public function getSnapshot()
-    {
-        return [
-            'method' => 'GET',
-            'path'   => 'snapshots/{id}',
-            'params' => ['id' => $this->idParam]
-        ];
-    }
-
     public function getTypes()
     {
         return [

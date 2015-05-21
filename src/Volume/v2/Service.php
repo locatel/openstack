@@ -97,4 +97,8 @@ class Service extends AbstractService
         return $this->model('Snapshot')->create($options);
     }
 
+    public function createVolume(array $options)
+    {
+        return $this->model('Volume')->create($options);
+    }
 }
