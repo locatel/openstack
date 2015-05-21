@@ -31,4 +31,10 @@ class Volume extends AbstractResource implements IsListable, IsRetrievable
         $response = $this->execute($this->api->getVolume(), ['id' => (string) $this->id]);
         $this->populateFromResponse($response);
     }
+
+    public function create(array $userOptions)
+    {
+        $response = $this->execute($this->api->postVolume(), $userOptions);
+        return $this->populateFromResponse($response);
+    }
 }
