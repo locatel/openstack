@@ -17,6 +17,7 @@ class Network extends AbstractResource implements IsListable, IsRetrievable
     public $name;
     public $status;
     public $subnets;
+    public $shared;
     public $links;
 
     protected $resourceKey = 'network';
