@@ -51,6 +51,33 @@ the marker value, and begin the list from there.
 DESC
     ];
 
+    public function postSnapshot()
+    {
+        return [
+            'method' => 'POST',
+            'path'   => 'snapshots',
+            'jsonKey' => 'snapshot',
+              'params' => [
+                  'name' => [
+                      'type' => 'string',
+                      'required' => true,
+                  ],
+                  'description' => [
+                      'type' => 'string',
+                      'required' => false,
+                  ],
+                 'volume_id' => [
+                      'type' => 'string',
+                      'required' => true,
+                  ],
+                 'force' => [
+                   'type' => 'string',
+                   ]
+            ]
+        ];
+    }
+
+
     public function getVolumes()
     {
         return [

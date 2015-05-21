@@ -31,4 +31,10 @@ class Snapshot extends AbstractResource implements IsListable, IsRetrievable
         $response = $this->execute($this->api->getSnapshot(), ['id' => (string) $this->id]);
         $this->populateFromResponse($response);
     }
+
+    public function create(array $userOptions)
+    {
+        $response = $this->execute($this->api->postSnapshot(), $userOptions);
+        return $this->populateFromResponse($response);
+    }
 }

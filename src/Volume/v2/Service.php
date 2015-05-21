@@ -92,5 +92,9 @@ class Service extends AbstractService
         return $this->model('Snapshot')->enumerate($operation, $mapFn);
     }
 
+    public function createSnapshot(array $options)
+    {
+        return $this->model('Snapshot')->create($options);
+    }
 
 }
