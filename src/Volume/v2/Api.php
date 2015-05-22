@@ -100,7 +100,10 @@ DESC
                   ],
                  'force' => [
                    'type' => 'string',
-                   ]
+                 ],
+                  'quiesce' => [
+                   'type' => 'string',
+                 ],
             ]
         ];
     }
