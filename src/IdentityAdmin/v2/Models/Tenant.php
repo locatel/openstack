@@ -37,6 +37,10 @@ class Tenant extends AbstractResource
         $this->populateFromResponse($response);
     }
 
+    public function delete()
+    {
+        $this->execute($this->api->deleteTenant(), $this->getAttrs(['id']));
+    }
 
 	public function getUsers()
 	{

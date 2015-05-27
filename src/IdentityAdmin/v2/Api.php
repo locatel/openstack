@@ -12,6 +12,13 @@ use OpenStack\Common\Api\ApiInterface;
  */
 class Api implements ApiInterface
 {
+    private $idParam = [
+        'type' => 'string',
+        'required' => true,
+        'location' => 'url',
+        'description' => 'The unique ID of the remote resource.',
+    ];
+
     public function getTenants()
     {
         return [
@@ -69,6 +76,16 @@ class Api implements ApiInterface
         ];
     }
 
+    public function deleteTenant()
+    {
+        return [
+            'method' => 'DELETE',
+            'path'   => 'tenants/{id}',
+            'params' => ['id' => $this->idParam],
+        ];
+    }
+
+
     public function getTenantUsers()
     {
         return [
@@ -125,6 +142,37 @@ class Api implements ApiInterface
 			'jsonKey' => 'user',
             'params' => [
                 'name' => [
+                    'type' => 'string',
+                    'required' => true,
+                ],
+            ]
+        ];
+    }
+
+    public function deleteUser()
+    {
+        return [
+            'method' => 'DELETE',
+            'path'   => 'users/{id}',
+            'params' => ['id' => $this->idParam],
+        ];
+    }
+
+    public function associateUser()
+    {
+        return [
+            'method' => 'PUT',
+            'path'   => 'tenants/{tenant_id}/users/{user_id}/roles/OS-KSADM/{role_id}',
+            'params' => [
+                'tenant_id' => [
+                    'type' => 'string',
+                    'required' => true,
+                ],
+                'user_id' => [
+                    'type' => 'string',
+                    'required' => true,
+                ],
+                'role_id' => [
                     'type' => 'string',
                     'required' => true,
                 ],

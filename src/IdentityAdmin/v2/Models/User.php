@@ -39,5 +39,17 @@ class User extends AbstractResource
         $response = $this->execute($this->api->postUser(), $userOptions);
         return $this->populateFromResponse($response);
     }
+
+	public function delete()
+	{
+		$this->execute($this->api->deleteUser(), $this->getAttrs(['id']));
+	}
+
+    public function associate(array $options)
+    {
+		$response = $this->execute($this->api->associateUser(), ['user_id' => $this->id, 'role_id' => $options['role_id'], 'tenant_id' => $options['tenant_id']]);
+		//return $response->json()['metadata'][$key];
+		return $response->json();
+    }
 	
 }

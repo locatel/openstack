@@ -96,4 +96,14 @@ class Service extends AbstractService
         //return $this->model('User')->create(array_merge($options, ['urlType' => 'adminURL']));
         return $this->model('User')->create($options);
     }
+
+    /**
+     * Add roles to user on tenant
+     *
+     */
+    public function associateUser(array $options)
+    {
+        return $this->model('User')->associate($options);
+    }
+
 }
