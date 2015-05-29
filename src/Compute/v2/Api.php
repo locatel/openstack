@@ -158,7 +158,6 @@ DESC
             'path'   => 'os-keypairs',
             'params' => [
                 'limit'   => $this->limitParam,
-                //'marker'  => $this->markerParam,
             ],
         ];
     }
@@ -175,10 +174,35 @@ DESC
         return [
             'method' => 'GET',
             'path'   => 'os-keypairs/{name}',
-            //'params' => ['id' => $this->idParam]
             'params' => ['name' => $this->nameParam]
         ];
     }
+
+    public function deleteKeypair()
+    {
+        return [
+            'method' => 'DELETE',
+            'path'   => 'os-keypairs/{name}',
+            'params' => ['name' => $this->nameParam]
+        ];
+    }
+
+    public function postKeypair()
+    {
+        return [
+            'method' => 'POST',
+            'path'   => 'os-keypairs',
+            'jsonKey' => 'keypair',
+            'params' => [
+                'name' => $this->nameParam,
+                'public_key' => [
+					'type' => 'string',
+					'required' => true,
+				],
+            ]
+        ];
+    }
+
 
 	public function getNetworks()
 	{
@@ -187,7 +211,6 @@ DESC
 			'path'   => 'os-networks',
 			'params' => [
 				'limit'   => $this->limitParam,
-				//'marker'  => $this->markerParam,
 			],
 		];
 	}

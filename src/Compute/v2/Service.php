@@ -152,6 +152,18 @@ class Service extends AbstractService
     }
 
     /**
+     * Import a new keypair resource.
+     *
+     * @param array $options {@see \OpenStack\Compute\v2\Api::postKeypair}
+     *
+     * @return \OpenStack\Compute\v2\Models\Keypair
+     */
+    public function importKeypair(array $options)
+    {
+        return $this->model('Keypair')->create($options);
+    }
+
+    /**
      * List networks.
      *
      * @param array    $options {@see \OpenStack\Compute\v2\Api::getNetworks}

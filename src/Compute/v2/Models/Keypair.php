@@ -16,21 +16,30 @@ class Keypair extends AbstractResource implements IsListable, IsRetrievable
     public $id;
     public $name;
     public $fingerprint;
-    public $public_key;
+    public $publicKey;
 
     protected $resourceKey = 'keypair';
     protected $resourcesKey = 'keypairs';
+
+	protected $aliases = [
+		'public_key'    => 'publicKey',
+	];
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function populateFromArray(array $array)
 	{
-		foreach ($array['keypair'] as $key => $val) {
-			$property = isset($this->aliases[$key]) ? $this->aliases[$key] : $key;
-			if (property_exists($this, $property)) {
-				$this->$property = $val;
+		if (isset($array['keypair'])) {
+			foreach ($array['keypair'] as $key => $val) {
+				$property = isset($this->aliases[$key]) ? $this->aliases[$key] : $key;
+				if (property_exists($this, $property)) {
+					$this->$property = $val;
+				}
 			}
+		}
+		else {
+			parent::populateFromArray($array);
 		}
 	}
 
@@ -43,4 +52,24 @@ class Keypair extends AbstractResource implements IsListable, IsRetrievable
         $response = $this->execute($this->api->getKeypair(), ['name' => (string) $this->name]);
         $this->populateFromResponse($response);
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     */
+    public function create(array $data)
+    {
+        $response = $this->execute($this->api->postKeypair(), $data);
+        return $this->populateFromResponse($response);
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    public function delete()
+    {
+        $this->execute($this->api->deleteKeypair(), $this->getAttrs(['name']));
+    }
+
 }
