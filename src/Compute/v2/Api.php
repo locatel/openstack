@@ -203,6 +203,38 @@ DESC
         ];
     }
 
+    public function getConsoleOutput()
+    {
+        return [
+            'method' => 'POST',
+            'path' => 'servers/{id}/action',
+            'jsonKey' => 'os-getConsoleOutput',
+            'params' => [
+                'id' => $this->idParam,
+                'length' => [
+                    'type' => 'integer',
+                    'required' => false,
+                ],
+            ],
+        ];
+    }
+
+    public function getConsole()
+    {
+        return [
+            'method' => 'POST',
+            'path' => 'servers/{id}/action',
+            'jsonKey' => 'os-getVNCConsole',
+            'params' => [
+                'id' => $this->idParam,
+				'type' => [
+					'type' => 'string',
+                    'required' => true,
+				],
+            ],
+        ];
+    }
+
 
 	public function getNetworks()
 	{
