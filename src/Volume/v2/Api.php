@@ -143,21 +143,21 @@ DESC
             'path'   => 'backups',
             'jsonKey' => 'backup',
               'params' => [
-                  'name' => [
+                 'name' => [
                       'type' => 'string',
                       'required' => true,
-                  ],
-                  'description' => [
+                 ],
+                 'description' => [
                       'type' => 'string',
                       'required' => false,
-                  ],
+                 ],
                  'backup_id' => [
                       'type' => 'string',
                       'required' => true,
-                  ],
+                 ],
                  'force' => [
                    'type' => 'string',
-                   ]
+                 ],
             ]
         ];
     }
@@ -209,7 +209,7 @@ DESC
                       'type' => 'string',
                       'required' => false,
                   ],
-                 'image_id' => [
+                 'imageRef' => [
                       'type' => 'string',
                       'required' => false,
                   ],
@@ -226,6 +226,16 @@ DESC
             ]
         ];
     }
+
+	public function deleteVolume()
+    {
+        return [
+            'method' => 'DELETE',
+            'path'   => 'volumes/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
     public function getTypes()
     {
         return [

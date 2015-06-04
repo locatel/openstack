@@ -19,6 +19,7 @@ class Volume extends AbstractResource implements IsListable, IsRetrievable
     public $size;
     public $description;
     public $links;
+    public $attachments;
 
     protected $resourceKey = 'volume';
     protected $resourcesKey = 'volumes';
@@ -37,4 +38,13 @@ class Volume extends AbstractResource implements IsListable, IsRetrievable
         $response = $this->execute($this->api->postVolume(), $userOptions);
         return $this->populateFromResponse($response);
     }
+
+	/**
+	 * {@inheritDoc}
+	 */
+	 public function delete()
+	 {
+	 	$this->execute($this->api->deleteVolume(), $this->getAttrs(['id']));
+	 }
+
 }
