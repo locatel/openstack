@@ -193,4 +193,35 @@ class Service extends AbstractService
         $network->populateFromArray($options);
         return $network;
     }
+
+    /**
+     * List secgroups.
+     *
+     * @param array    $options {@see \OpenStack\Compute\v2\Api::getSecgroups}
+     * @param callable $mapFn   A callable function that will be invoked on every iteration of the list.
+     *
+     * @return \Generator
+     */
+    public function listSecgroups(array $options = [], callable $mapFn = null)
+    {
+        $operation = $this->getOperation($this->api->getSecgroups(), $options);
+        return $this->model('Secgroup')->enumerate($operation, $mapFn);
+    }
+
+    /**
+     * Retrieve a secgroup object without calling the remote API. Any values provided in the array will populate the
+     * empty object, allowing you greater control without the expense of network transactions. To call the remote API
+     * and have the response populate the object, call {@see Secgroup::retrieve}.
+     *
+     * @param array $options An array of attributes that will be set on the {@see Secgroup} object. The array keys need to
+     *                       correspond to the class public properties.
+     *
+     * @return \OpenStack\Compute\v2\Models\Secgroup
+     */
+    public function getSecgroup(array $options = [])
+    {
+        $secgroup = $this->model('Secgroup');
+        $secgroup->populateFromArray($options);
+        return $secgroup;
+    }
 }

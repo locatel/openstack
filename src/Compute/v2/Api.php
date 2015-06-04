@@ -203,6 +203,60 @@ DESC
         ];
     }
 
+    public function getSecgroups()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'os-security-groups',
+            'params' => [
+                'limit'   => $this->limitParam,
+            ],
+        ];
+    }
+
+    public function getSecgroupsDetail()
+    {
+        $op = $this->getAll();
+        $op['path'] += '/detail';
+        return $op;
+    }
+
+    public function getSecgroup()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'os-security-groups/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
+    public function deleteSecgroup()
+    {
+        return [
+            'method' => 'DELETE',
+            'path'   => 'os-security-groups/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
+	/*
+    public function postSecgroup()
+    {
+        return [
+            'method' => 'POST',
+            'path'   => 'os-security-group',
+            'jsonKey' => 'keypair',
+            'params' => [
+                'name' => $this->nameParam,
+                'public_key' => [
+					'type' => 'string',
+					'required' => true,
+				],
+            ]
+        ];
+    }
+	*/
+
     public function getConsoleOutput()
     {
         return [
