@@ -239,23 +239,62 @@ DESC
         ];
     }
 
-	/*
     public function postSecgroup()
     {
         return [
             'method' => 'POST',
-            'path'   => 'os-security-group',
-            'jsonKey' => 'keypair',
+            'path'   => 'os-security-groups',
+            'jsonKey' => 'security_group',
             'params' => [
                 'name' => $this->nameParam,
-                'public_key' => [
+                'description' => [
 					'type' => 'string',
 					'required' => true,
 				],
             ]
         ];
     }
-	*/
+
+
+    public function deleteSecrule()
+    {
+        return [
+            'method' => 'DELETE',
+            'path'   => 'os-security-group-rules/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
+    public function postSecrule()
+    {
+        return [
+            'method' => 'POST',
+            'path'   => 'os-security-group-rules',
+            'jsonKey' => 'security_group_rule',
+            'params' => [
+                'from_port' => [
+					'type' => 'string',
+					'required' => true,
+				],
+                'to_port' => [
+					'type' => 'string',
+					'required' => true,
+				],
+                'ip_protocol' => [
+					'type' => 'string',
+					'required' => true,
+				],
+                'cidr' => [
+					'type' => 'string',
+					'required' => true,
+				],
+                'parent_group_id' => [
+					'type' => 'string',
+					'required' => true,
+				],
+            ]
+        ];
+    }
 
     public function getConsoleOutput()
     {

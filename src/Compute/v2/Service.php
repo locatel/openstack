@@ -224,4 +224,33 @@ class Service extends AbstractService
         $secgroup->populateFromArray($options);
         return $secgroup;
     }
+
+    /**
+     * Create a new security group resource.
+     *
+     * @param array $options {@see \OpenStack\Compute\v2\Api::postSecgroup}
+     *
+     * @return \OpenStack\Compute\v2\Models\Secgroup
+     */
+    public function createSecgroup(array $options)
+    {
+        return $this->model('Secgroup')->create($options);
+    }
+
+    /**
+     * Create a new security group rule resource.
+     *
+     * @param array $options {@see \OpenStack\Compute\v2\Api::postSecrule}
+     *
+     * @return \OpenStack\Compute\v2\Models\Secgroup
+     */
+    public function createSecrule(array $options)
+    {
+        return $this->model('Secgroup')->create_rule($options);
+    }
+
+    public function deleteSecrule(array $options)
+    {
+        return $this->model('Secgroup')->delete_rule($options);
+    }
 }

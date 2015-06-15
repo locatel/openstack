@@ -70,4 +70,23 @@ class Secgroup extends AbstractResource implements IsListable, IsRetrievable
         $this->execute($this->api->deleteSecgroup(), $this->getAttrs(['id']));
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     */
+    public function create_rule(array $data)
+    {
+        $response = $this->execute($this->api->postSecrule(), $data);
+        return $this->populateFromResponse($response);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     */
+    public function delete_rule(array $data)
+    {
+        $this->execute($this->api->deleteSecrule(), $data);
+    }
+
 }
