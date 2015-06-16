@@ -14,10 +14,15 @@ class User extends AbstractResource
     public $id;
     public $name;
     public $email;
+    public $password;
     public $enabled;
 
 	protected $resourceKey = 'user';
 	protected $resourcesKey = 'users';
+
+	protected $aliases = [
+		'OS-KSADM:password' => 'password',
+	];
 
     public function populateFromArray(array $data)
     {

@@ -145,6 +145,14 @@ class Api implements ApiInterface
                     'type' => 'string',
                     'required' => true,
                 ],
+                'email' => [
+                    'type' => 'string',
+                    'required' => true,
+                ],
+				'password' => [
+					'type' => 'string',
+					'required' => false,
+				],
             ]
         ];
     }
