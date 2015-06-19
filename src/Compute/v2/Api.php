@@ -896,6 +896,18 @@ EOL
         ];
     }
 
+    public function startServer()
+    {
+        return [
+            'method' => 'POST',
+            'path' => 'servers/{id}/action',
+            'jsonKey' => 'os-start',
+            'params' => [
+                'id' => $this->idParam,
+            ],
+        ];
+    }
+
     private function isRequired(array $param)
     {
         return array_merge($param, ['required' => true]);
