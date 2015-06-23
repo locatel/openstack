@@ -5,6 +5,7 @@ namespace OpenStack\Volume\v2\Models;
 use OpenStack\Common\Resource\AbstractResource;
 use OpenStack\Common\Resource\IsListable;
 use OpenStack\Common\Resource\IsRetrievable;
+use OpenStack\Common\Resource\HasWaiterTrait;
 
 /**
  * Represents a Volume v2 Volume.
@@ -13,6 +14,8 @@ use OpenStack\Common\Resource\IsRetrievable;
  */
 class Volume extends AbstractResource implements IsListable, IsRetrievable
 {
+    use HasWaiterTrait;
+
     public $id;
     public $name;
     public $status;
