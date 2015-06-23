@@ -129,4 +129,19 @@ class OpenStack
             'catalogType' => 'network'
         ]));
     }
+
+    /**
+     * Creates a new DNS v1 service.
+     *
+     * @param array $options Options that will be used in configuring the service.
+     *
+     * @return \OpenStack\DNS\v1\Service
+     */
+    public function dnsv1(array $options = [])
+    {
+        return $this->builder->createService('DNS', 1, array_merge($options, [
+            'catalogName' => 'designate',
+            'catalogType' => 'dns'
+        ]));
+    }
 }
