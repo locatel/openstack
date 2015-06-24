@@ -908,6 +908,18 @@ EOL
         ];
     }
 
+    public function stopServer()
+    {
+        return [
+            'method' => 'POST',
+            'path' => 'servers/{id}/action',
+            'jsonKey' => 'os-stop',
+            'params' => [
+                'id' => $this->idParam,
+            ],
+        ];
+    }
+
     private function isRequired(array $param)
     {
         return array_merge($param, ['required' => true]);

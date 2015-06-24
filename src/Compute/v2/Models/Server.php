@@ -158,6 +158,16 @@ class Server extends AbstractResource implements
     }
 
     /**
+     * Stop the server.
+     */
+    public function stop()
+    {
+        $this->execute($this->api->stopServer(), [
+            'id'   => $this->id,
+        ]);
+    }
+
+    /**
      * Rebuilds the server.
      *
      * @param array $options {@see \OpenStack\Compute\v2\Api::rebuildServer}
