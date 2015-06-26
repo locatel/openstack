@@ -19,10 +19,12 @@ class Volume extends AbstractResource implements IsListable, IsRetrievable
     public $id;
     public $name;
     public $status;
+    public $image;
     public $size;
     public $description;
     public $links;
     public $attachments;
+    public $volume_image_metadata;
 
     protected $resourceKey = 'volume';
     protected $resourcesKey = 'volumes';

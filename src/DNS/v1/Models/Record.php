@@ -54,5 +54,4 @@ class Record extends AbstractResource implements IsListable, IsRetrievable
 			'domain_id' => (string) $this->domain_id,
 		]);
 	 }
-
 }
