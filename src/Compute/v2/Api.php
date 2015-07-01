@@ -203,6 +203,17 @@ DESC
         ];
     }
 
+    public function getLimits()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'limits',
+            'params' => [
+                'limit'   => $this->limitParam,
+            ],
+        ];
+    }
+
     public function getSecgroups()
     {
         return [

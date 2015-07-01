@@ -137,7 +137,7 @@ class OpenStack
      *
      * @return \OpenStack\DNS\v1\Service
      */
-    public function dnsv1(array $options = [])
+    public function dnsV1(array $options = [])
     {
         return $this->builder->createService('DNS', 1, array_merge($options, [
             'catalogName' => 'designate',
