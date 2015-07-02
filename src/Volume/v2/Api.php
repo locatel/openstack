@@ -263,6 +263,18 @@ DESC
         ];
     }
 
+	    public function getLimits()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'limits',
+            'params' => [
+                'limit'   => $this->limitParam,
+            ],
+        ];
+    }
+
+
     private function isRequired(array $param)
     {
         return array_merge($param, ['required' => true]);

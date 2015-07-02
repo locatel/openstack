@@ -101,4 +101,11 @@ class Service extends AbstractService
     {
         return $this->model('Volume')->create($options);
     }
+
+	public function getLimits($options = [])
+    {
+        $limits = $this->model('Limits');
+        $limits->populateFromArray($options);
+        return $limits;
+    }
 }
