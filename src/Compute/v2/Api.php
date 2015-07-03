@@ -197,7 +197,7 @@ DESC
                 'name' => $this->nameParam,
                 'public_key' => [
 					'type' => 'string',
-					'required' => true,
+					'required' => false,
 				],
             ]
         ];

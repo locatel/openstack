@@ -17,12 +17,14 @@ class Keypair extends AbstractResource implements IsListable, IsRetrievable
     public $name;
     public $fingerprint;
     public $publicKey;
+    public $privateKey;
 
     protected $resourceKey = 'keypair';
     protected $resourcesKey = 'keypairs';
 
 	protected $aliases = [
 		'public_key'    => 'publicKey',
+		'private_key'    => 'privateKey',
 	];
 
 	/**
