@@ -37,4 +37,13 @@ class Snapshot extends AbstractResource implements IsListable, IsRetrievable
         $response = $this->execute($this->api->postSnapshot(), $userOptions);
         return $this->populateFromResponse($response);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+     public function delete()
+     {
+        $this->execute($this->api->deleteSnapshot(), $this->getAttrs(['id']));
+     }
+
 }

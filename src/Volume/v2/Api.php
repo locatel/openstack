@@ -58,7 +58,7 @@ DESC
             'path'   => 'snapshots',
             'params' => [
                 'limit'   => $this->limitParam,
-                'marker'  => $this->markerParam,
+                //'marker'  => $this->markerParam,
             ],
         ];
     }
@@ -105,6 +105,15 @@ DESC
                    'type' => 'string',
                  ],
             ]
+        ];
+    }
+
+	public function deleteSnapshot()
+    {
+        return [
+            'method' => 'DELETE',
+            'path'   => 'snapshots/{id}',
+            'params' => ['id' => $this->idParam]
         ];
     }
 

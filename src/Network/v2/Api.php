@@ -51,6 +51,18 @@ the marker value, and begin the list from there.
 DESC
     ];
 
+    public function postNetwork()
+    {
+        return [
+            'method' => 'POST',
+            'path'   => 'v2.0/networks',
+            'jsonKey' => 'network',
+            'params' => [
+                'name' => $this->nameParam,
+            ]
+        ];
+    }
+
     public function getNetworks()
     {
         return [
@@ -79,6 +91,15 @@ DESC
         ];
     }
 
+    public function deleteNetwork()
+    {
+        return [
+            'method' => 'DELETE',
+            'path'   => 'v2.0/networks/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
     public function getSubnets()
     {
         return [
@@ -90,6 +111,7 @@ DESC
             ],
         ];
     }
+
 
     public function getSubnetsDetail()
     {
@@ -106,6 +128,204 @@ DESC
             'params' => ['id' => $this->idParam]
         ];
     }
+
+    public function postSubnet()
+    {
+        return [
+            'method' => 'POST',
+            'path'   => 'v2.0/subnets',
+            'jsonKey' => 'subnet',
+            'params' => [
+                'network_id' => [
+					'type' => 'string',
+					'required' => true,
+				],
+				'ip_version' => [
+					'type' => 'integer',
+					'required' => true,
+				],
+				'cidr' => [
+					'type' => 'string',
+					'required' => true,
+				],
+
+            ]
+        ];
+    }
+
+    public function postRouter()
+    {
+        return [
+            'method' => 'POST',
+            'path'   => 'v2.0/routers',
+            'jsonKey' => 'router',
+            'params' => [
+                'name' => $this->nameParam,
+				'external_gateway_info' => [
+					'type' => 'object',
+					'properties' => [
+						'network_id' => [
+							'type' => 'string',
+							'required' => true,
+						],
+					],
+				],
+            ]
+        ];
+    }
+
+    public function getRouters()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'v2.0/routers',
+            'params' => [
+                'limit'   => $this->limitParam,
+                //'marker'  => $this->markerParam,
+            ],
+        ];
+    }
+
+    public function getRoutersDetail()
+    {
+        $op = $this->getAll();
+        $op['path'] += '/detail';
+        return $op;
+    }
+
+    public function getRouter()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'v2.0/routers/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
+	public function putAddRouterInterface()
+	{
+		return [
+			'method' => 'PUT',
+			'path'   => 'v2.0/routers/{id}/add_router_interface',
+			'params' => [
+				'id' => $this->idParam,
+                'subnet_id' => [
+					'type' => 'string',
+					'required' => true,
+				],
+			],
+		];
+	}
+
+    public function deleteRouter()
+    {
+        return [
+            'method' => 'DELETE',
+            'path'   => 'v2.0/routers/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
+    public function postPort()
+    {
+        return [
+            'method' => 'POST',
+            'path'   => 'v2.0/ports',
+            'jsonKey' => 'router',
+            'params' => [
+                'network_id' => [
+					'type' => 'string',
+					'required' => true,
+				],
+            ]
+        ];
+    }
+
+    public function getPorts()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'v2.0/ports',
+            'params' => [
+                'limit'   => $this->limitParam,
+                //'marker'  => $this->markerParam,
+				'device_id' => [
+					'type' => 'string',
+					'location' => 'query',
+					'description' => '',
+				],
+				/*
+				'network_id ' => [
+					'type' => 'string',
+					'location' => 'query',
+					'description' => '',
+				],
+				*/
+            ],
+        ];
+    }
+
+    public function getPortsDetail()
+    {
+        $op = $this->getAll();
+        $op['path'] += '/detail';
+        return $op;
+    }
+
+    public function getPort()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'v2.0/ports/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
+    public function deletePort()
+    {
+        return [
+            'method' => 'DELETE',
+            'path'   => 'v2.0/ports/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
+    public function getFloatingIPs()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'v2.0/floatingips',
+            'params' => [
+                'limit'   => $this->limitParam,
+                //'marker'  => $this->markerParam,
+            ],
+        ];
+    }
+
+    public function getFloatingIP()
+    {
+        return [
+            'method' => 'GET',
+            'path'   => 'v2.0/floatingip/{id}',
+            'params' => ['id' => $this->idParam]
+        ];
+    }
+
+	public function putFloatingIP()
+	{
+		return [
+			'method' => 'PUT',
+			'path'   => 'v2.0/floatingips/{id}',
+            'jsonKey' => 'floatingip',
+			'params' => [
+				'id' => $this->idParam,
+                'port_id' => [
+					'type' => 'string',
+					'required' => true,
+				],
+			],
+		];
+	}
 
     private function isRequired(array $param)
     {
