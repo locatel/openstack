@@ -222,6 +222,10 @@ DESC
                       'type' => 'string',
                       'required' => false,
                   ],
+                 'volume_type' => [
+                      'type' => 'string',
+                      'required' => false,
+                  ],
                  'volume_id' => [
                       'type' => 'string',
                       'required' => false,

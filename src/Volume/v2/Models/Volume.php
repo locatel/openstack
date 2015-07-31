@@ -25,9 +25,16 @@ class Volume extends AbstractResource implements IsListable, IsRetrievable
     public $links;
     public $attachments;
     public $volume_image_metadata;
+	public $createdAt;
+	public $volumeType;
 
     protected $resourceKey = 'volume';
     protected $resourcesKey = 'volumes';
+
+	protected $aliases = [
+		'created_at'  => 'createdAt',
+		'volume_type'  => 'volumeType',
+	];
 
     /**
      * {@inheritDoc}
