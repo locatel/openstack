@@ -19,9 +19,14 @@ class Snapshot extends AbstractResource implements IsListable, IsRetrievable
     public $size;
     public $description;
     public $links;
+	public $createdAt;
 
     protected $resourceKey = 'snapshot';
     protected $resourcesKey = 'snapshots';
+
+	protected $aliases = [
+		'created_at'  => 'createdAt',
+	];
 
     /**
      * {@inheritDoc}
