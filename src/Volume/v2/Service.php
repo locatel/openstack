@@ -97,6 +97,24 @@ class Service extends AbstractService
         return $this->model('Snapshot')->create($options);
     }
 
+    public function getBackup(array $options = [])
+    {
+        $backup = $this->model('Backup');
+        $backup->populateFromArray($options);
+        return $backup;
+    }
+
+    public function listBackups(array $options = [], callable $mapFn = null)
+    {
+        $operation = $this->getOperation($this->api->getBackups(), $options);
+        return $this->model('Backup')->enumerate($operation, $mapFn);
+    }
+
+    public function createBackup(array $options)
+    {
+        return $this->model('Backup')->create($options);
+    }
+
     public function createVolume(array $options)
     {
         return $this->model('Volume')->create($options);

@@ -124,7 +124,7 @@ DESC
             'path'   => 'backups',
             'params' => [
                 'limit'   => $this->limitParam,
-                'marker'  => $this->markerParam,
+                //'marker'  => $this->markerParam,
             ],
         ];
     }
@@ -154,19 +154,29 @@ DESC
               'params' => [
                  'name' => [
                       'type' => 'string',
-                      'required' => true,
+                      'required' => false,
                  ],
                  'description' => [
                       'type' => 'string',
                       'required' => false,
                  ],
-                 'backup_id' => [
+                 'container' => [
+                      'type' => 'string',
+                      'required' => false,
+                 ],
+                 'volume_id' => [
                       'type' => 'string',
                       'required' => true,
                  ],
                  'force' => [
                    'type' => 'string',
                  ],
+                 'incremental' => [
+                   'type' => 'string',
+				 ],
+                 'snapshot' => [
+                   'type' => 'string',
+				 ],
             ]
         ];
     }
