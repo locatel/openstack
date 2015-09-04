@@ -32,6 +32,8 @@ class Server extends AbstractResource implements
     public $updated;
     public $flavor;
     public $hostId;
+    public $host;
+    public $hypervisor;
     public $image;
     public $links;
     public $metadata;
@@ -56,8 +58,11 @@ class Server extends AbstractResource implements
         'accessIPv6' => 'ipv6',
         'tenant_id'  => 'tenantId',
         'user_id'    => 'userId',
+        'user_data'    => 'userData',
         'security_groups' => 'securityGroups',
         'OS-EXT-STS:task_state' => 'taskState',
+		'OS-EXT-SRV-ATTR:host' => 'host',
+		'OS-EXT-SRV-ATTR:hypervisor_hostname' => 'hypervisor',
         'key_name'  => 'keyName',
 		'os-extended-volumes:volumes_attached' => 'volumes',
     ];
